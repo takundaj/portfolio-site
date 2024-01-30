@@ -8,8 +8,8 @@ type Props = {
 
 const ProjectTab = ({ name, onClick, isSelected }: Props) => {
   const buttonStyles = isSelected
-    ? "text-white border-blue-500"
-    : "text-[#ADB7BE] border-slate-600 hover:border-white";
+    ? "text-white border-primary-500"
+    : "text-[#ADB7BE] border-secondary-600 hover:border-white";
 
   return (
     <button

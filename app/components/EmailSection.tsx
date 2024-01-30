@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import GitHubSVG from "/public/images/github.png";
 import LinkedInSVG from "/public/images/linkedIn.png";
 import Link from "next/link";
@@ -7,6 +8,33 @@ import Image from "next/image";
 type Props = {};
 
 export default function EmailSection({}: Props) {
+  const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const handleSumbit = async (e) => {
+    e.preventDefault();
+    const data = {
+      email: e.target.email.value,
+      subject: e.target.subject.value,
+      message: e.target.message.value,
+    };
+    const JSONdata = JSON.stringify(data);
+    const endpoint = "/api/send";
+    const options = {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSONdata,
+    };
+
+    const response = await fetch(endpoint, options);
+    const resData = await response.json();
+    console.log(resData);
+
+    if (response.status === 200) {
+      console.log("Message sent.");
+      setEmailSubmitted(true);
+    }
+  };
   return (
     <section className="grid grid-cols-2 my-12 md:my-12 py-24 gap-4 relative">
       <Image
@@ -44,7 +72,7 @@ export default function EmailSection({}: Props) {
         </div>
       </div>
       <div>
-        <form action="" className="flex flex-col ">
+        <form action="" className="flex flex-col" onSubmit={handleSumbit}>
           <div className="mb-6">
             <label
               htmlFor="email"
@@ -54,6 +82,7 @@ export default function EmailSection({}: Props) {
             </label>
             <input
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              name="email"
               type="email"
               id="email"
               required
@@ -69,6 +98,7 @@ export default function EmailSection({}: Props) {
             </label>
             <input
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+              name="subject"
               type="text"
               id="subject"
               required
@@ -92,10 +122,15 @@ export default function EmailSection({}: Props) {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-purple-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            className="bg-primary-500 hover:bg-purple-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
           >
             Send Message
           </button>
+          {emailSubmitted ? (
+            <p className="text-green-500 text-sm mt-2">
+              Email sent successfully!
+            </p>
+          ) : null}
         </form>
       </div>
     </section>
