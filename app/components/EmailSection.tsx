@@ -20,15 +20,14 @@ export default function EmailSection({}: Props) {
     const endpoint = "/api/send";
     const options = {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSONdata,
     };
 
     const response = await fetch(endpoint, options);
-    const resData = await response.json();
-    console.log(resData);
+    const resData = response.json();
 
     if (response.status === 200) {
       console.log("Message sent.");
@@ -115,7 +114,7 @@ export default function EmailSection({}: Props) {
             <textarea
               className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
               name="message"
-              is="message"
+              id="message"
               required
               placeholder="Let's talk about..."
             />
