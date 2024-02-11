@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import GitHubSVG from "/public/images/github.png";
 import LinkedInSVG from "/public/images/linkedIn.png";
 import Link from "next/link";
@@ -9,7 +9,7 @@ type Props = {};
 
 export default function EmailSection({}: Props) {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
-  const handleSumbit = async (e) => {
+  const handleSumbit = async (e: any) => {
     e.preventDefault();
     const data = {
       email: e.target.email.value,
@@ -27,7 +27,6 @@ export default function EmailSection({}: Props) {
     };
 
     const response = await fetch(endpoint, options);
-    const resData = response.json();
 
     if (response.status === 200) {
       console.log("Message sent.");
