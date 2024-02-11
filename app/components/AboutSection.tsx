@@ -10,10 +10,10 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
-        <li>JavaScript</li>
+        <li>Typescript</li>
         <li>React Native</li>
-        <li>Nodejs</li>
-        <li>Express</li>
+        <li>Nodejs & Express</li>
+        <li>Mongo DB</li>
       </ul>
     ),
   },
@@ -23,7 +23,7 @@ const TAB_DATA = [
     content: (
       <ul className="list-disc pl-2">
         <li>2.1 - Economics BA Hons</li>
-        <li>Nottingham trent University</li>
+        <li>Nottingham trent University 2017 - 2020</li>
       </ul>
     ),
   },
@@ -32,8 +32,8 @@ const TAB_DATA = [
     id: "work-experience",
     content: (
       <ul className="list-disc pl-2">
-        <li>1y 10m Mobile App Developer</li>
-        <li>6m freelance web developer</li>
+        <li>2 Years experience as a Mobile App Developer</li>
+        <li>6 Months as a freelance Web Developer</li>
       </ul>
     ),
   },
@@ -58,7 +58,9 @@ export default function AboutSection({}: Props) {
         <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
           <h2 className="text-4xl font-bold text-white mb-4">About me</h2>
           <p className="text-base lg:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            A React Native Developer with near 2 years of experience, with a
+            passion for developing robust and scalable solutions that meet the
+            needs of both clients and end-users.
           </p>
           <div className="flex flex-row justify-start mt-8">
             <TabButton

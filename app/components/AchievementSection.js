@@ -8,33 +8,33 @@ const AnimatedNumbers = dynamic(
   { ssr: false }
 );
 
-type Props = {};
-
 const achievementList = [
-  { metric: "Projects", value: "100", postfix: "+" },
-  { prefix: "~", metric: "Users", value: "1M+" },
-  { metric: "Awards", value: "10" },
-  { metric: "Years", value: "5" },
+  { metric: "Projects", value: "4", postfix: " " },
+  { prefix: "", metric: "Users", value: "1" },
+  { metric: "Certifications", value: "0" },
+  { metric: "Years Experience", value: "2" },
 ];
 
-export default function AchievementSection({}: Props) {
+export default function AchievementSection({}) {
   return (
     <div className="py-8 px-4 xl:gap-16 sm:px-16 xl:px-16">
-      <div className="border-[#33353F] border rounded-md py-8 px-17 flex flex-row items-center justify-between">
+      <div className="border-[#33353F] border rounded-md py-8 px-17 flex flex-row items-center justify-around">
         {achievementList.map((achievement, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col item-center justify-center mx-4"
+              className="flex flex-col item-center justify-center"
             >
-              <h2 className="text-white text-4xl font-bold flex flex-row">
+              <h2 className="text-white text-4xl font-bold flex flex-row mx-auto">
                 {achievement.prefix}
+                @ts-ignore
                 <AnimatedNumbers
                   includeComma
                   animateToNumber={parseInt(achievement.value)}
                   locale="en-US"
                   className="text-white text-4xl font-bold"
                   configs={(_, index) => {
+                    //@ts-expect-error
                     return {
                       mass: 1,
                       friciton: 100,

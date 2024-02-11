@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/send/route.js"
+    "app/api/send/route.js",
+    "app/components/AchievementSection.js"
   ],
   "exclude": ["node_modules"]
 }
